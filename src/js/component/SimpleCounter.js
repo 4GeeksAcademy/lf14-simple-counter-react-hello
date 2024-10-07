@@ -14,21 +14,11 @@ function SimpleCounter() {
     const id = setInterval(() => {
       if (isRunning) {
         setDigitOne((prevDigitOne) => (prevDigitOne + 1) % 10);
-        if (digitOne === 9) {
-          setDigitTwo((prevDigitTwo) => (prevDigitTwo + 1) % 10);
-          if (digitTwo === 9) {
-            setDigitThree((prevDigitThree) => (prevDigitThree + 1) % 10);
-            if (digitThree === 9) {
-              setDigitFour((prevDigitFour) => (prevDigitFour + 1) % 10);
-              if (digitFour === 9) {
-                setDigitFive((prevDigitFive) => (prevDigitFive + 1) % 10);
-                if (digitFive === 9) {
-                  setDigitSix((prevDigitSix) => (prevDigitSix + 1) % 10);
-                }
-              }
-            }
-          }
-        }
+        setDigitTwo((prevDigitTwo) => digitOne === 9 ? (prevDigitTwo + 1) % 10 : prevDigitTwo);
+        setDigitThree((prevDigitThree) => digitTwo === 9 ? (prevDigitThree + 1) % 10 : prevDigitThree);
+        setDigitFour((prevDigitFour) => digitThree === 9 ? (prevDigitFour + 1) % 10 : prevDigitFour);
+        setDigitFive((prevDigitFive) => digitFour === 9 ? (prevDigitFive + 1) % 10 : prevDigitFive);
+        setDigitSix((prevDigitSix) => digitFive === 9 ? (prevDigitSix + 1) % 10 : prevDigitSix);
       }
     }, 1000);
     setIntervalId(id);
